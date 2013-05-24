@@ -4,6 +4,7 @@ PATH
     tlab (0.0.1)
       cancan
       rails (~> 4.0.0.rc1)
+      simple_form
 
 GEM
   remote: https://rubygems.org/
@@ -35,7 +36,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.9)
     builder (3.1.4)
-    cancan (1.6.9)
+    cancan (1.6.10)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     hike (1.2.2)
@@ -75,6 +76,13 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    simple_form (1.4.1)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -99,5 +107,7 @@ PLATFORMS
 
 DEPENDENCIES
   rspec-rails
+  simplecov
+  simplecov-rcov
   sqlite3
   tlab!
