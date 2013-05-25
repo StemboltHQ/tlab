@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe ApplicationController do
-  it { true == true }
+  it { true.should == true }
 end

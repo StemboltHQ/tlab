@@ -6,6 +6,16 @@ group :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'spring', github: "jonleighton/spring"
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-spring', github: 'mknapik/guard-spring'
+
+  gem 'pry', github: 'pry/pry'
+  gem 'pry-plus'
+end
+
 # Declare your gem's dependencies in tlab.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
