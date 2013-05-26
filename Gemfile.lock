@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/jonleighton/spring.git
-  revision: 661a416d27e554bf1c839a2cd35b8a87e6317175
+  remote: git://github.com/cbrunsdon/spring.git
+  revision: 7a6a27ce1fc3d1a3ae6cae4251316d8bdbe49717
+  branch: cherrypicking
   specs:
     spring (0.0.8)
 
@@ -27,7 +28,7 @@ PATH
     tlab (0.0.1)
       cancan
       rails (~> 4.0.0.rc1)
-      simple_form
+      simple_form (~> 3.0.0.rc)
 
 GEM
   remote: https://rubygems.org/
@@ -167,7 +168,9 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    simple_form (1.4.1)
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0.rc1, < 4.1)
+      activemodel (>= 4.0.0.rc1, < 4.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)

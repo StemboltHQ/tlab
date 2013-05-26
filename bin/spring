@@ -13,6 +13,7 @@ if spec
   spec.activate
   load spec.bin_file("spring")
 else
-  $stderr.puts "Could not find spring gem in #{Gem::Specification.dirs.join(", ")}."
-  exit 1
+  load '~/.rvm/gems/ruby-2.0.0-p195@tlab/bundler/gems/spring-7a6a27ce1fc3/bin/spring'
+  #$stderr.puts "Could not find spring gem in #{Gem::Specification.dirs.join(", ")}."
+  #exit 1
 end

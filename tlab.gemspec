@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.0.rc1"
   s.add_dependency "cancan"
-  s.add_dependency "simple_form"
+  s.add_dependency "simple_form", "~> 3.0.0.rc"
 
   s.add_development_dependency "sqlite3"
 end

@@ -24,6 +24,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+
+  config.include Tlab::Engine.routes.url_helpers
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -50,4 +53,14 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+end
+
+#these rediculous hacks set up the tlab routes as the routing for view tests
+ActionView::TestCase::TestController.instance_eval do
+  helper Tlab::Engine.routes.url_helpers
+end
+ActionView::TestCase::TestController.class_eval do
+  def _routes
+    Tlab::Engine.routes
+  end
 end

@@ -11,6 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20130525032903) do
+
+  create_table "tlab_posts", force: true do |t|
+    t.string   "title"
+    t.string   "preview"
+    t.text     "body"
+    t.datetime "published_at"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tlab_posts", ["author_id"], name: "index_tlab_posts_on_author_id"
 
 end

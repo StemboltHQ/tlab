@@ -1,0 +1,13 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title %>
+
+  <%= f.input :preview %>
+
+  <%= f.input :body %>
+
+  <%= f.input :published_at %>
+
+  <%= f.submit %>
+<% end %>
