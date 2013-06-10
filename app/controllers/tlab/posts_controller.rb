@@ -4,6 +4,8 @@ module Tlab
   class PostsController < ApplicationController
     load_and_authorize_resource
 
+    layout 'application'
+
     # GET /posts
     def index
     end
