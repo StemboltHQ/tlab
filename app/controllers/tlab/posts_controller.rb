@@ -3,7 +3,7 @@ require_dependency "tlab/application_controller"
 module Tlab
   class PostsController < ApplicationController
     before_filter :filter_params, only: [:create]
-    load_and_authorize_resource
+    load_and_authorize_resource class: 'Tlab::Post', find_by: :slug
 
     layout 'application'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130525032903) do
+ActiveRecord::Schema.define(version: 20130613022707) do
 
   create_table "tlab_posts", force: true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130525032903) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "tlab_posts", ["author_id"], name: "index_tlab_posts_on_author_id"

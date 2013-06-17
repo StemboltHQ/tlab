@@ -25,7 +25,7 @@ module Tlab
     describe "GET show" do
       let(:post) { stub_model Post }
       before(:each) do
-        Post.should_receive(:find).and_return post
+        Post.should_receive(:find_by_slug!).and_return post
         get :show, id: post.to_param, use_route: :tlab
       end
       it { should render_template :show }
@@ -43,7 +43,7 @@ module Tlab
     describe "GET edit" do
       let(:post) { stub_model Post }
       before(:each) do
-        Post.should_receive(:find).and_return post
+        Post.should_receive(:find_by_slug!).and_return post
         get :edit, {:id => post.to_param, use_route: :tlab}
       end
       specify { assigns(:post).should eq(post) }
@@ -75,7 +75,7 @@ module Tlab
       let(:post) { stub_model(Post) }
       let(:post_params) { { 'preview' => 'sups' } }
       before(:each) do
-        Post.should_receive(:find).and_return post
+        Post.should_receive(:find_by_slug!).and_return post
       end
       context 'update succeeds' do
         before(:each) do
@@ -98,7 +98,7 @@ module Tlab
     describe "DELETE destroy" do
       let(:post) { stub_model(Post) }
       before(:each) do
-        Post.should_receive(:find).and_return post
+        Post.should_receive(:find_by_slug!).and_return post
         post.should_receive(:destroy)
         delete :destroy, {:id => post.to_param, use_route: :tlab}
       end
