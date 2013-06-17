@@ -2,6 +2,7 @@ require_dependency "tlab/application_controller"
 
 module Tlab
   class PostsController < ApplicationController
+    before_filter :filter_params, only: [:create]
     load_and_authorize_resource
 
     layout 'application'
@@ -50,6 +51,10 @@ module Tlab
       # Only allow a trusted parameter "white list" through.
       def post_params
         params.require(:post).permit(:title, :preview, :published_at, :author_id, :body)
+      end
+
+      def filter_params
+        params[:tlab_post] = post_params
       end
   end
 end

@@ -21,4 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency "simple_form", "~> 3.0.0.rc"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "database_cleaner"
 end

@@ -51,10 +51,12 @@ module Tlab
     end
 
     describe "POST create" do
+      let(:attributes) { { body: 'sups' } }
+
       context 'save succeeds' do
         before(:each) do
           Post.any_instance.should_receive(:save).and_return(true)
-          post :create, { post: {}, use_route: :tlab }
+          post :create, { post: attributes, use_route: :tlab }
         end
         it { should redirect_to assigns(:post) }
       end
@@ -62,7 +64,7 @@ module Tlab
       context 'save fails' do
         before(:each) do
           Post.any_instance.should_receive(:save).and_return(false)
-          post :create, { post: {}, use_route: :tlab }
+          post :create, { post: attributes, use_route: :tlab }
         end
         it { should render_template :new }
         specify { assigns(:post).should be_a_new(Post) }
