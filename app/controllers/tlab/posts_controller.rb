@@ -11,6 +11,7 @@ module Tlab
 
     # GET /posts
     def index
+      @posts = @posts.reverse
     end
 
     # GET /posts/1
@@ -27,6 +28,7 @@ module Tlab
 
     # POST /posts
     def create
+      @post.author = current_user
       if @post.save
         redirect_to @post, notice: 'Post was successfully created.'
       else

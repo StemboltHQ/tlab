@@ -1,4 +1,5 @@
 module Tlab
-  class Tlab::ApplicationController < ::ApplicationController
+  class ApplicationController < ::ApplicationController
+
   end
 end
