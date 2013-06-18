@@ -1,5 +1,5 @@
 Tlab::Engine.routes.draw do
 
-  resources :posts
+  resources :posts, path: ''
 
 end
