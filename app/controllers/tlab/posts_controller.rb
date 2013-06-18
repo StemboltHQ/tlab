@@ -2,10 +2,12 @@ require_dependency "tlab/application_controller"
 
 module Tlab
   class PostsController < ApplicationController
-    before_filter :filter_params, only: [:create]
+    before_filter :filter_params, only: :create
     load_and_authorize_resource class: 'Tlab::Post', find_by: :slug
 
     layout 'application'
+
+    rescue_from ActiveRecord::RecordNotFound, :with => :rescue_friendly_history
 
     # GET /posts
     def index
@@ -50,11 +52,17 @@ module Tlab
     private
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:title, :preview, :published_at, :author_id, :body)
+        params.require(:post).permit(:title, :preview, :published_at, :author_id, :body, :slug)
       end
 
       def filter_params
         params[:tlab_post] = post_params
+      end
+
+      def rescue_friendly_history exception
+        Post.friendly.find(params[:id]).tap do |post|
+          return redirect_to post, status: 301
+        end
       end
   end
 end

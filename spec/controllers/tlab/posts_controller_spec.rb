@@ -14,6 +14,26 @@ module Tlab
       @controller.stub(:current_ability).and_return(@ability)
     end
 
+    describe '#rescue_friendly_history' do
+      context 'found a match' do
+        let(:post) { stub_model Post }
+        before(:each) do
+          Post.stub_chain(:friendly, :find).and_return post
+          get :show, id: 'noslughere', use_route: :tlab
+        end
+        it 'looks up post from history' do
+          should redirect_to post
+        end
+      end
+      context 'no match found' do
+        it 'raises an exception' do
+          expect {
+            get :show, id: 'betterexplode', use_route: :tlab
+          }.to raise_exception(ActiveRecord::RecordNotFound)
+        end
+      end
+    end
+
     describe "GET index" do
       before(:each) do
         get :index, use_route: :tlab

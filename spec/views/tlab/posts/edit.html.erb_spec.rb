@@ -17,6 +17,7 @@ describe "tlab/posts/edit" do
       assert_select "input#post_title[name=?]", "post[title]"
       assert_select "input#post_preview[name=?]", "post[preview]"
       assert_select "textarea#post_body[name=?]", "post[body]"
+      assert_select "input#post_slug[name=?]", "post[slug]", 1
     end
   end
 end

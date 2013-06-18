@@ -3,7 +3,9 @@
 
   <%= f.input :title %>
 
-  <%= f.input :slug %>
+  <% if @post.id %>
+    <%= f.input :slug %>
+  <% end %>
 
   <%= f.input :preview %>
 
