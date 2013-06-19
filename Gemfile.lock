@@ -31,7 +31,7 @@ GIT
 PATH
   remote: .
   specs:
-    tlab (0.0.1)
+    tlab (0.0.2)
       cancan
       friendly_id (~> 5.0.0.alpha)
       rails (~> 4.0.0.rc1)
