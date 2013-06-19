@@ -11,9 +11,9 @@ spec = Gem::Specification.load(candidates.last)
 
 if spec
   spec.activate
+  require 'spring/commands'
   load spec.bin_file("spring")
 else
-  load '~/.rvm/gems/ruby-2.0.0-p195@tlab/bundler/gems/spring-7a6a27ce1fc3/bin/spring'
-  #$stderr.puts "Could not find spring gem in #{Gem::Specification.dirs.join(", ")}."
-  #exit 1
+  $stderr.puts "Could not find spring gem in #{Gem::Specification.dirs.join(", ")}."
+  exit 1
 end

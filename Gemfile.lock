@@ -5,9 +5,8 @@ GIT
     friendly_id (5.0.0.alpha1)
 
 GIT
-  remote: git://github.com/cbrunsdon/spring.git
-  revision: 1ca4996721caa329d6bd83e248e78ac31b8063b9
-  branch: cherrypicking
+  remote: git://github.com/jonleighton/spring.git
+  revision: bffcf19f7de22fa620128710b86fd077bf479b2b
   specs:
     spring (0.0.9)
 
