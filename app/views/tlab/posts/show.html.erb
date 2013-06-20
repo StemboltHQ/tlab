@@ -1,51 +1,37 @@
-<div itemscope itemtype='http://schema.org/Article' class="blog-post">
+<section class='tlab-post' itemscope itemtype='http://schema.org/Article' >
   <header>
-  <div class="row-fluid">
+    <div class="btn-group pull-right tlab-post-controls">
+      <% if can? :manage, Tlab::Post %>
+        <%= link_to t('.edit'), edit_post_path(@post), class: 'btn tlab-post-btn-edit' %>
+      <% end %>
 
-    <div class="span8">
-      <h1 itemprop='name' class='pull-left' ><%= @post.title %></h1>
+      <%= link_to t('.back'), posts_path, class: 'btn btn-primary tlab-post-btn-back' %>
     </div>
 
-    <p itemprop='author' itemscope itemtype='http://schema.org/Person'>
-      <% if @post.author.respond_to? :google_plus %>
-        <link rel='author' href='<%= @post.author.google_plus %>'>
-      <% end %>
-      By
-      <% if @post.author.respond_to? :given_name %>
-        <span itemprop='givenName'><%= @post.author.given_name %></span>
-      <% end %>
-      <% if @post.author.respond_to? :family_name %>
-        <span itemprop='familyName'><%= @post.author.family_name %></span>
-      <% end %>
+    <h1 itemprop='name' ><%= @post.title.titlecase %></h1>
+
+    <p class='tlab-post-info' >
+      <span class='tlab-post-publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
+
+      <span class='tlab-post-author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+        <% if @post.author.respond_to? :google_plus %>
+          <link rel='author' href='<%= @post.author.google_plus %>'>
+        <% end %>
+
+        <% if @post.author.respond_to? :given_name %>
+          <span class='tlab-post-name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
+        <% end %>
+
+        <% if @post.author.respond_to? :family_name %>
+          <span class='tlab-post-name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
+        <% end %>
+      </span>
     </p>
-
-    <div class="span4">
-      <div class="pull-right">
-        <% if can? :manage, Tlab::Post %>
-          <%= link_to edit_post_path(@post), class: 'btn btn-warning' do %>
-            <i class="icon-edit"> Edit</i>
-          <% end %>
-        <% end %>
-
-        <%= link_to posts_path, class: 'btn btn-primary' do %>
-          <i class="icon-arrow-left large"> Back</i>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row-fluid">
-    <div class="span12">
-      <i itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= @post.published_at %></i>
-    </div>
-  </div>
   </header>
 
-  <div class="row-fluid">
-    <div class="span12">
-      <p itemprop='articleBody'>
-        <%= @post.body.html_safe %>
-      </p>
-    </div>
-  </div>
-</div>
+  <article itemprop='articleBody'>
+    <p>
+      <%= @post.body.html_safe %>
+    </p>
+  </article>
+</section>

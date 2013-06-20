@@ -3,6 +3,7 @@ require_dependency "tlab/application_controller"
 module Tlab
   class PostsController < ApplicationController
     before_filter :filter_params, only: :create
+
     load_and_authorize_resource class: 'Tlab::Post', find_by: :slug
 
     layout 'application'
@@ -11,7 +12,7 @@ module Tlab
 
     # GET /posts
     def index
-      @posts = @posts.reverse
+      @posts = Post.order('published_at desc')
     end
 
     # GET /posts/1

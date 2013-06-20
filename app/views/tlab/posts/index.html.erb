@@ -1,33 +1,12 @@
-<h1>Listing posts</h1>
+<div>
+  <% if can? :manage, Tlab::Post %>
+    <%= link_to t('.new'), new_post_path, class: 'btn btn-primary pull-right tlab-post-btn-new' %>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Preview</th>
-      <th>Published at</th>
-      <th>Author</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
+</div>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.preview %></td>
-        <td><%= post.published_at %></td>
-        <td><%= post.author %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @posts.each do |post| %>
+  <%= render 'tlab/posts/index_entry', post: post %>
+<% end %>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>

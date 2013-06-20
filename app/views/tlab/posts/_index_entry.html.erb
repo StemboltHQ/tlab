@@ -1,0 +1,32 @@
+<section class="tlab-post-preview">
+  <heading>
+    <div>
+      <div class="btn-group tlab-post-controls pull-right">
+        <% if can? :manage, post %>
+          <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small tlab-post-btn-edit' %>
+          <%= link_to t('.delete'), post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger tlab-post-btn-delete' %>
+        <% end %>
+      </div>
+
+      <h3>
+        <%= link_to post.title.titlecase, post %>
+      </h3>
+    </div>
+
+    <p>
+      <span class='tlab-post-publishedAt'><%= l post.published_at %></span>
+
+      <% if post.author.respond_to? :given_name %>
+        <span class='tlab-post-name-first'><%= post.author.given_name.titlecase %></span>
+      <% end %>
+
+      <% if post.author.respond_to? :family_name %>
+        <span class='tlab-post-name-last'><%= post.author.family_name.titlecase %></span>
+      <% end %>
+    </p>
+  </heading>
+
+  <article>
+    <%= post.preview.html_safe %>
+  </article>
+</section>

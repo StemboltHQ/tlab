@@ -1,0 +1,17 @@
+en:
+  tlab:
+    default: &DEFAULT
+      edit: 'Edit'
+      back: 'Back'
+      delete: 'Delete'
+      show: 'Show'
+      new: 'New Post'
+
+    posts:
+      index:
+        <<: *DEFAULT
+        title: 'Recent Blog Posts'
+        no-posts: "Sorry, there's no blog posts yet!"
+      show:
+        <<: *DEFAULT
+
