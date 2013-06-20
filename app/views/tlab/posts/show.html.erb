@@ -1,36 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div itemscope itemtype='http://schema.org/Article' class="blog-post">
+  <header>
+  <div class="row-fluid">
 
-<div itemscope itemtype='http://schema.org/Article'>
-  <h1 itemprop='name'><%= @post.title %></h1>
-  <p itemprop='author' itemscope itemtype='http://schema.org/Person'>
-    <% if @post.author.respond_to? :google_plus %>
-      <link rel='author' href='<%= @post.author.google_plus %>'>
-    <% end %>
-    By
+    <div class="span8">
+      <h1 itemprop='name' class='pull-left' ><%= @post.title %></h1>
+    </div>
+
+    <p itemprop='author' itemscope itemtype='http://schema.org/Person'>
+      <% if @post.author.respond_to? :google_plus %>
+        <link rel='author' href='<%= @post.author.google_plus %>'>
+      <% end %>
+      By
       <% if @post.author.respond_to? :given_name %>
         <span itemprop='givenName'><%= @post.author.given_name %></span>
       <% end %>
       <% if @post.author.respond_to? :family_name %>
         <span itemprop='familyName'><%= @post.author.family_name %></span>
       <% end %>
-    </a>
-  </p>
+    </p>
 
-  <p>
-    <strong>Preview:</strong>
-    <span itemprop='articleSection'><%= @post.preview %></span>
-  </p>
+    <div class="span4">
+      <div class="pull-right">
+        <% if can? :manage, Tlab::Post %>
+          <%= link_to edit_post_path(@post), class: 'btn btn-warning' do %>
+            <i class="icon-edit"> Edit</i>
+          <% end %>
+        <% end %>
 
-  <p>
-    <strong>Body:</strong>
-    <span itemprop='articleBody'><%= @post.body %></span>
-  </p>
+        <%= link_to posts_path, class: 'btn btn-primary' do %>
+          <i class="icon-arrow-left large"> Back</i>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <strong>Published at:</strong>
-    <span itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= @post.published_at %></span>
-  </p>
+  <div class="row-fluid">
+    <div class="span12">
+      <i itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= @post.published_at %></i>
+    </div>
+  </div>
+  </header>
 
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', posts_path %>
+  <div class="row-fluid">
+    <div class="span12">
+      <p itemprop='articleBody'>
+        <%= @post.body.html_safe %>
+      </p>
+    </div>
+  </div>
 </div>
