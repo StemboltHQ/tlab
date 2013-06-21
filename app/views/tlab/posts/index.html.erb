@@ -1,12 +1,13 @@
-<div>
-  <% if can? :manage, Tlab::Post %>
-    <%= link_to t('.new'), new_post_path, class: 'btn btn-primary pull-right tlab-post-btn-new' %>
+<section id="tlab-posts">
+  <div>
+    <% if can? :manage, Tlab::Post %>
+      <%= link_to t('.new'), new_post_path, class: 'btn btn-primary pull-right tlab-post-btn-new' %>
+    <% end %>
+
+    <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
+  </div>
+
+  <% @posts.each do |post| %>
+    <%= render 'tlab/posts/index_entry', post: post %>
   <% end %>
-
-  <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
-</div>
-
-<% @posts.each do |post| %>
-  <%= render 'tlab/posts/index_entry', post: post %>
-<% end %>
-
+</section>
