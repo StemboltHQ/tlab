@@ -10,8 +10,10 @@ en:
     posts:
       index:
         <<: *DEFAULT
-        title: 'Recent Blog Posts'
-        no-posts: "Sorry, there's no blog posts yet!"
+        title: 'Blog'
+        no-posts: "Look! it's nothing."
+      index_entry:
+        <<: *DEFAULT
       show:
         <<: *DEFAULT
 
