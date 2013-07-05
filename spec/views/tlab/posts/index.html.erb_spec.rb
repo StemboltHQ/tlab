@@ -35,20 +35,20 @@ describe "tlab/posts/index" do
   it "renders the published date" do
     render
 
-    assert_select ".tlab-post-publishedAt", text: ( l DateTime.parse("2000-01-01") ), count: 2
+    assert_select ".publishedAt", text: ( l DateTime.parse("2000-01-01") ), count: 2
   end
 
   it "does not render an edit or delete button" do
     render
 
-    assert_select ".tlab-post-btn-edit", count: 0
-    assert_select ".tlab-post-btn-delete", count: 0
+    assert_select ".edit", count: 0
+    assert_select ".delete", count: 0
   end
 
   it "does not render a new page button" do
     render
 
-    assert_select ".tlab-post-btn-new", count: 0
+    assert_select ".new", count: 0
   end
 
   context "user can manage post" do
@@ -57,14 +57,14 @@ describe "tlab/posts/index" do
     it "renders a new page button" do
       render
 
-      assert_select ".tlab-post-btn-new", count: 1
+      assert_select ".new", count: 1
     end
 
     it "renders an edit or delete button" do
       render
 
-      assert_select ".tlab-post-btn-edit", count: 2
-      assert_select ".tlab-post-btn-delete", count: 2
+      assert_select ".edit", count: 2
+      assert_select ".delete", count: 2
     end
   end
 end

@@ -26,13 +26,13 @@ describe "tlab/posts/show" do
   it "renders the published date" do
     render
 
-    assert_select '.tlab-post-publishedAt', text: (l DateTime.parse('2000-01-01') )
+    assert_select '.publishedAt', text: (l DateTime.parse('2000-01-01') )
   end
 
   it "does not render an edit button" do
     render
 
-    assert_select '.tlab-post-btn-edit', count: 0
+    assert_select '.edit', count: 0
   end
 
   context "user can manage post" do
@@ -43,7 +43,7 @@ describe "tlab/posts/show" do
     it "renders an edit button" do
       render
 
-      assert_select '.tlab-post-btn-edit'
+      assert_select '.edit'
     end
   end
 end

@@ -1,28 +1,28 @@
   <header>
-    <div class="btn-group pull-right tlab-post-controls">
+    <div class="btn-group pull-right">
       <% if can? :manage, Tlab::Post %>
-        <%= link_to t('.edit'), edit_post_path(@post), class: 'btn tlab-post-btn-edit' %>
+        <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
       <% end %>
 
-      <%= link_to t('.back'), posts_path, class: 'btn btn-primary tlab-post-btn-back' %>
+      <%= link_to t('.back'), posts_path, class: 'btn btn-primary back' %>
     </div>
 
     <h1 itemprop='name' ><%= @post.title.titlecase %></h1>
 
-    <p class='tlab-post-info' >
-      <span class='tlab-post-publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
+    <p class='post-info' >
+      <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
 
-      <span class='tlab-post-author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+      <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
         <% if @post.author.respond_to? :google_plus %>
           <link rel='author' href='<%= @post.author.google_plus %>'>
         <% end %>
 
         <% if @post.author.respond_to? :given_name %>
-          <span class='tlab-post-name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
+          <span class='name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
         <% end %>
 
         <% if @post.author.respond_to? :family_name %>
-          <span class='tlab-post-name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
+          <span class='name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
         <% end %>
       </span>
     </p>
