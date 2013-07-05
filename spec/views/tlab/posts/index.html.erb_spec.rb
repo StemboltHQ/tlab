@@ -23,7 +23,7 @@ describe "tlab/posts/index" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     render
 
-    assert_select "heading h3", :text => "Title".to_s, :count => 2
+    assert_select "heading h2", :text => "Title".to_s, :count => 2
   end
 
   it "renders an article with the preview" do

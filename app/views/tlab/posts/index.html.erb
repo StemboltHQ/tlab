@@ -4,7 +4,7 @@
       <%= link_to t('.new'), new_post_path, class: 'btn btn-primary pull-right new' %>
     <% end %>
 
-    <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
+    <h2><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h2>
   </div>
 
   <% @posts.each do |post| %>

@@ -7,7 +7,7 @@
       <%= link_to t('.back'), posts_path, class: 'btn btn-primary back' %>
     </div>
 
-    <h1 itemprop='name' ><%= @post.title.titlecase %></h1>
+    <h2 itemprop='name' ><%= @post.title.titlecase %></h2>
 
     <p class='post-info' >
       <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
