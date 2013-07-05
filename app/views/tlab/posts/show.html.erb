@@ -1,4 +1,3 @@
-<section class='tlab-post' itemscope itemtype='http://schema.org/Article' >
   <header>
     <div class="btn-group pull-right tlab-post-controls">
       <% if can? :manage, Tlab::Post %>
@@ -34,4 +33,17 @@
       <%= @post.body.html_safe %>
     </p>
   </article>
+
+  <footer class="clear-fix">
+    <% unless @post.prev.nil? %>
+      <%= link_to @post.prev, class: 'pull-left btn' do %>
+        <i class="icon-caret-left"></i> Previous
+      <% end %>
+    <% end %>
+    <% unless @post.next.nil? %>
+      <%= link_to @post.next, class: 'pull-right btn' do %>
+        Next <i class="icon-caret-right"></i>
+      <% end %>
+    <% end %>
+  </footer>
 </section>

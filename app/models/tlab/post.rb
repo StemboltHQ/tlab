@@ -8,5 +8,21 @@ module Tlab
     attr_accessor :author_name
     belongs_to :author, class_name: Tlab.author_class
 
+    def next
+      future_posts.first
+    end
+
+    def prev
+      past_posts.first
+    end
+    private
+
+    def future_posts
+      Tlab::Post.where("published_at > ?", [published_at]).order("published_at asc")
+    end
+
+    def past_posts
+      Tlab::Post.where("published_at < ?", [published_at]).order("published_at desc")
+    end
   end
 end

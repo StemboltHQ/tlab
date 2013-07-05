@@ -7,7 +7,7 @@ group :test do
 end
 
 group :development do
-  gem 'spring', github: "jonleighton/spring"
+  gem 'spring'
   gem 'guard-bundler'
   gem 'guard-rspec'
   gem 'guard-spring', github: 'mknapik/guard-spring'

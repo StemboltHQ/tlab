@@ -25,8 +25,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-
   config.include Tlab::Engine.routes.url_helpers
+  config.use_transactional_fixtures = true
 
   # ## Mock Framework
   #
