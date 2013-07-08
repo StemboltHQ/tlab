@@ -15,8 +15,8 @@ module Tlab
     def prev
       past_posts.first
     end
-    private
 
+    private
     def future_posts
       Tlab::Post.where("published_at > ?", [published_at]).order("published_at asc")
     end

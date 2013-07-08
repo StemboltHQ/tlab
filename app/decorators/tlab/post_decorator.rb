@@ -19,5 +19,9 @@ module Tlab
       "http://pinterest.com/pin/create/button/?url=#{request.original_url}"
     end
 
+    def trunc_preview char_length
+      "#{read_attribute(:preview)[0 ... char_length]}&hellip;"
+    end
+
   end
 end

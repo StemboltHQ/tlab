@@ -26,5 +26,10 @@ describe Tlab::PostDecorator do
     subject { decorator.share_pinterest request }
     it { should eq "http://pinterest.com/pin/create/button/?url=http://test.com" }
   end
+
+  describe '#trunc_preview' do
+    before(:each) { decorator.preview = "12345" }
+    specify { decorator.trunc_preview(2).should eq("12&hellip;") }
+  end
 end
 
