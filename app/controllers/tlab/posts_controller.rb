@@ -17,6 +17,7 @@ module Tlab
 
     # GET /posts/1
     def show
+      @post = @post.decorate
     end
 
     # GET /posts/new

@@ -6,8 +6,8 @@ describe "tlab/posts/show" do
       :title => "Title",
       :body => 'Body',
       :published_at => DateTime.parse("2000-01-01"),
-      :author => nil
-    ))
+      :author => nil ).decorate
+    )
     view.stub(:can?).and_return false
   end
 

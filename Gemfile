@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'draper'
+
 group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov', :require => false

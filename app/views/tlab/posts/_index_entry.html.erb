@@ -1,5 +1,5 @@
 <section class="tlab-post-preview">
-  <heading>
+  <header>
     <div>
       <div class="btn-group tlab-post-controls pull-right">
         <% if can? :manage, post %>
@@ -24,7 +24,7 @@
         <span class='name-last'><%= post.author.family_name.titlecase %></span>
       <% end %>
     </p>
-  </heading>
+  </header>
 
   <article>
     <%= post.preview.html_safe %>

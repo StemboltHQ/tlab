@@ -50,6 +50,7 @@ module Tlab
       end
       it { should render_template :show }
       specify { assigns(:post).should == post }
+      specify { assigns(:post).should be_decorated }
     end
 
     describe "GET new" do
