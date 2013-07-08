@@ -14,6 +14,7 @@ en:
         no-posts: "Look! it's nothing."
       index_entry:
         <<: *DEFAULT
+        link-to-show: 'Read more'
       show:
         <<: *DEFAULT
 

@@ -14,7 +14,7 @@ describe "tlab/posts/show" do
   it "renders the title in a header" do
     render
 
-    assert_select 'header h2', text: 'Title'
+    assert_select 'header h1', text: 'Title'
   end
 
   it "renders the body in an article" do

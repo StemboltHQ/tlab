@@ -1,49 +1,89 @@
-  <header>
-    <div class="btn-group pull-right">
-      <% if can? :manage, Tlab::Post %>
-        <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
-      <% end %>
+<section id='tlab-post' itemscope itemtype='http://schema.org/Article' >
+  <div id="sidebar-social" class="pull-left">
+    <% if @post.author.respond_to? :google_plus_image %>
+      <div class="portrait">
+        <div class="image">
+          <%= image_tag @post.author.google_plus_image "200" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="portrait-offset-vertical">
+      <p><span class="lead">Share&nbsp;</span><span class="share">all over the interwebs</span></p>
+        <%= link_to @post.share_facebook( request ), class: "social-link" do %>
+          <div class="social-icon">
+            <i class="icon icon-facebook"></i>
+          </div>
+          <span class="social-name">Facebook</span>
+        <% end %>
 
-      <%= link_to t('.back'), posts_path, class: 'btn btn-primary back' %>
+        <%= link_to @post.share_pinterest( request ), class: "social-link" do %>
+          <div class="social-icon">
+            <i class="icon icon-pinterest"></i>
+          </div>
+          <span class="social-name">Pinterest</span>
+        <% end %>
+
+        <%= link_to @post.share_twitter( request ), class: "social-link" do %>
+          <div class="social-icon">
+            <i class="icon icon-twitter"></i>
+          </div>
+          <span class="social-name">Twitter</span>
+        <% end %>
+
+        <%= link_to @post.share_linkedin( request ), class: "social-link" do %>
+          <div class="social-icon">
+            <i class="icon icon-linkedin-sign"></i>
+          </div>
+          <span class="social-name">Linkenin</span>
+        <% end %>
     </div>
+  </div>
 
-    <h2 itemprop='name' ><%= @post.title.titlecase %></h2>
+  <div class="portrait-offset-horizontal">
 
-    <p class='post-info' >
-      <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
+    <header class="clearfix title">
+      <h1 itemprop='name' ><%= @post.title.titlecase %></h1>
 
-      <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
-        <% if @post.author.respond_to? :google_plus %>
-          <link rel='author' href='<%= @post.author.google_plus %>'>
-        <% end %>
+      <span class='post-info pull-right' >
+        <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
 
-        <% if @post.author.respond_to? :given_name %>
-          <span class='name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
-        <% end %>
+        <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+          <% if @post.author.respond_to? :google_plus %>
+            <link rel='author' href='<%= @post.author.google_plus %>'>
+          <% end %>
 
-        <% if @post.author.respond_to? :family_name %>
-          <span class='name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
-        <% end %>
+          <% if @post.author.respond_to? :given_name %>
+            <span class='name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
+          <% end %>
+
+          <% if @post.author.respond_to? :family_name %>
+            <span class='name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
+          <% end %>
+
+          <% if can? :manage, Tlab::Post %>
+            <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
+          <% end %>
+        </span>
       </span>
-    </p>
-  </header>
+    </header>
 
-  <article itemprop='articleBody'>
-    <p>
-      <%= @post.body.html_safe %>
-    </p>
-  </article>
+    <article itemprop='articleBody'>
+      <p>
+        <%= @post.body.html_safe %>
+      </p>
+    </article>
 
-  <footer class="clear-fix">
-    <% unless @post.prev.nil? %>
-      <%= link_to @post.prev, class: 'pull-left btn' do %>
-        <i class="icon-caret-left"></i> Previous
+    <footer class="clear-fix">
+      <% unless @post.prev.nil? %>
+        <%= link_to @post.prev, class: 'pull-left btn' do %>
+          <i class="icon-caret-left"></i> Previous
+        <% end %>
       <% end %>
-    <% end %>
-    <% unless @post.next.nil? %>
-      <%= link_to @post.next, class: 'pull-right btn' do %>
-        Next <i class="icon-caret-right"></i>
+      <% unless @post.next.nil? %>
+        <%= link_to @post.next, class: 'pull-right btn' do %>
+          Next <i class="icon-caret-right"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  </footer>
+    </footer>
+  </div>
 </section>
