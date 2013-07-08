@@ -8,6 +8,8 @@ module Tlab
     attr_accessor :author_name
     belongs_to :author, class_name: Tlab.author_class
 
+    scope :most_recent, -> { order("published_at desc").first(3) }
+
     def next
       future_posts.first
     end
