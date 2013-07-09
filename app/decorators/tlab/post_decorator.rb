@@ -19,7 +19,7 @@ module Tlab
     end
 
     def trunc_preview char_length
-      "#{read_attribute(:preview)[0 ... char_length]}&hellip;"
+      "#{preview[0 ... char_length]}&hellip;"
     end
 
   end
