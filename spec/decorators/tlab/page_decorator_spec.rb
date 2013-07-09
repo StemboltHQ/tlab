@@ -22,9 +22,9 @@ describe Tlab::PostDecorator do
     it { should eq "http://www.linkedin.com/shareArticle?mini=true&url=http://test.com&title=A test" }
   end
 
-  describe "#share_pinterest" do
-    subject { decorator.share_pinterest request }
-    it { should eq "http://pinterest.com/pin/create/button/?url=http://test.com" }
+  describe "#share_google_plus" do
+    subject { decorator.share_google_plus request }
+    it { should eq "https://plus.google.com/share?url=http://test.com" }
   end
 
   describe '#trunc_preview' do

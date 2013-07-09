@@ -14,9 +14,8 @@ module Tlab
       "http://www.linkedin.com/shareArticle?mini=true&url=#{request.original_url}&title=#{title}"
     end
 
-    def share_pinterest request
-      #placeholder, missing required fields
-      "http://pinterest.com/pin/create/button/?url=#{request.original_url}"
+    def share_google_plus request
+      "https://plus.google.com/share?url=#{request.original_url}"
     end
 
     def trunc_preview char_length

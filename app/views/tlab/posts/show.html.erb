@@ -8,34 +8,7 @@
       </div>
     <% end %>
     <div class="portrait-offset-vertical">
-      <p><span class="lead">Share&nbsp;</span><span class="share">all over the interwebs</span></p>
-        <%= link_to @post.share_facebook( request ), class: "social-link" do %>
-          <div class="social-icon">
-            <i class="icon icon-facebook"></i>
-          </div>
-          <span class="social-name">Facebook</span>
-        <% end %>
-
-        <%= link_to @post.share_pinterest( request ), class: "social-link" do %>
-          <div class="social-icon">
-            <i class="icon icon-pinterest"></i>
-          </div>
-          <span class="social-name">Pinterest</span>
-        <% end %>
-
-        <%= link_to @post.share_twitter( request ), class: "social-link" do %>
-          <div class="social-icon">
-            <i class="icon icon-twitter"></i>
-          </div>
-          <span class="social-name">Twitter</span>
-        <% end %>
-
-        <%= link_to @post.share_linkedin( request ), class: "social-link" do %>
-          <div class="social-icon">
-            <i class="icon icon-linkedin-sign"></i>
-          </div>
-          <span class="social-name">Linkenin</span>
-        <% end %>
+      <%= render 'sharing_links' %>
     </div>
   </div>
 
