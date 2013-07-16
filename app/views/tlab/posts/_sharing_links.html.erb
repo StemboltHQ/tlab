@@ -1,30 +1,38 @@
-<p><span class="lead">Share&nbsp;</span><span class="share">all over the interwebs</span></p>
+<p class="visible-desktop"><span class="lead">Share&nbsp;</span><span class="share">all over the interwebs</span></p>
 
 <%= link_to @post.share_google_plus( request ), class: "social-link" do %>
   <div class="social-icon">
     <i class="icon icon-google-plus"></i>
   </div>
-  <span class="social-name">Google Plus</span>
+  <div class="inline">
+    <span class="social-name visible-desktop">Google Plus</span>
+  </div>
 <% end %>
 
 <%= link_to @post.share_linkedin( request ), class: "social-link" do %>
   <div class="social-icon">
     <i class="icon icon-linkedin-sign"></i>
   </div>
-  <span class="social-name">Linkenin</span>
+  <div class="inline">
+    <span class="social-name visible-desktop">Linkenin</span>
+  </div>
 <% end %>
 
 <%= link_to @post.share_twitter( request ), class: "social-link" do %>
   <div class="social-icon">
     <i class="icon icon-twitter"></i>
   </div>
-  <span class="social-name">Twitter</span>
+  <div class="inline">
+    <span class="social-name visible-desktop">Twitter</span>
+  </div>
 <% end %>
 
 <%= link_to @post.share_facebook( request ), class: "social-link" do %>
   <div class="social-icon">
     <i class="icon icon-facebook"></i>
   </div>
-  <span class="social-name">Facebook</span>
+  <div class="inline">
+    <span class="social-name visible-desktop">Facebook</span>
+  </div>
 <% end %>
 

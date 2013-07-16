@@ -1,62 +1,61 @@
 <section id='tlab-post' itemscope itemtype='http://schema.org/Article' >
-  <div id="sidebar-social" class="pull-left">
-    <% if @post.author.respond_to? :google_plus_image %>
-      <div class="portrait">
-        <div class="image">
-          <%= image_tag @post.author.google_plus_image "200" %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        <div id="sidebar-social">
+          <% if @post.author.respond_to? :google_plus_image %>
+            <%= image_tag @post.author.google_plus_image("200"), class: 'circle hidden-phone' %>
+          <% end %>
+          <%= render 'sharing_links' %>
         </div>
       </div>
-    <% end %>
-    <div class="portrait-offset-vertical">
-      <%= render 'sharing_links' %>
+
+      <div class="span9">
+        <header class="clearfix title">
+          <h1 itemprop='name' class='pull-left' ><%= @post.title.titlecase %></h1>
+
+          <span class='post-info pull-right' >
+            <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
+
+            <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+              <% if @post.author.respond_to? :google_plus %>
+                <link rel='author' href='<%= @post.author.google_plus %>'>
+              <% end %>
+
+              <% if @post.author.respond_to? :given_name %>
+                <span class='name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
+              <% end %>
+
+              <% if @post.author.respond_to? :family_name %>
+                <span class='name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
+              <% end %>
+
+              <% if can? :manage, Tlab::Post %>
+                <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
+              <% end %>
+            </span>
+          </span>
+        </header>
+
+        <article itemprop='articleBody'>
+          <p>
+            <%= @post.body.html_safe %>
+          </p>
+        </article>
+
+        <footer class="clear-fix">
+          <% unless @post.prev.nil? %>
+            <%= link_to @post.prev, class: 'pull-left btn' do %>
+              <i class="icon-caret-left"></i> Previous
+            <% end %>
+          <% end %>
+          <% unless @post.next.nil? %>
+            <%= link_to @post.next, class: 'pull-right btn' do %>
+              Next <i class="icon-caret-right"></i>
+            <% end %>
+          <% end %>
+        </footer>
+      </div>
     </div>
-  </div>
-
-  <div class="portrait-offset-horizontal">
-
-    <header class="clearfix title">
-      <h1 itemprop='name' class='pull-left' ><%= @post.title.titlecase %></h1>
-
-      <span class='post-info pull-right' >
-        <span class='publishedAt' itemprop='datePublished' content='<%= @post.published_at.try(:to_date) %>'><%= l @post.published_at %></span>
-
-        <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
-          <% if @post.author.respond_to? :google_plus %>
-            <link rel='author' href='<%= @post.author.google_plus %>'>
-          <% end %>
-
-          <% if @post.author.respond_to? :given_name %>
-            <span class='name-first' itemprop='givenName'><%= @post.author.given_name.titlecase %></span>
-          <% end %>
-
-          <% if @post.author.respond_to? :family_name %>
-            <span class='name-last' itemprop='familyName'><%= @post.author.family_name.titlecase %></span>
-          <% end %>
-
-          <% if can? :manage, Tlab::Post %>
-            <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
-          <% end %>
-        </span>
-      </span>
-    </header>
-
-    <article itemprop='articleBody'>
-      <p>
-        <%= @post.body.html_safe %>
-      </p>
-    </article>
-
-    <footer class="clear-fix">
-      <% unless @post.prev.nil? %>
-        <%= link_to @post.prev, class: 'pull-left btn' do %>
-          <i class="icon-caret-left"></i> Previous
-        <% end %>
-      <% end %>
-      <% unless @post.next.nil? %>
-        <%= link_to @post.next, class: 'pull-right btn' do %>
-          Next <i class="icon-caret-right"></i>
-        <% end %>
-      <% end %>
-    </footer>
   </div>
 </section>
