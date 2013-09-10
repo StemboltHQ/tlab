@@ -8,4 +8,8 @@
   </header>
 
   <%= render partial: 'tlab/posts/index_entry', collection: @posts, as: :post %>
+
+  <footer>
+    <%= will_paginate @posts %>
+  </footer>
 </section>

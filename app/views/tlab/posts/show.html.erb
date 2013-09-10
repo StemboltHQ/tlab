@@ -35,19 +35,18 @@
     </div>
   </div>
 </div>
+
 <footer class="clear-fix">
-<div class="btn-group">
-  <% unless @post.prev.nil? %>
-    <%= link_to @post.prev, class: 'btn post-prev' do %>
-      <i class="icon-caret-left"></i> Previous
-    <% end %>
+<% unless @post.prev.nil? %>
+  <%= link_to @post.prev, class: 'previous_page' do %>
+    ← Previous
   <% end %>
-  <%= link_to t('.index'), Tlab::Post, class: 'btn post-index' %>
-  <% unless @post.next.nil? %>
-    <%= link_to @post.next, class: 'btn post-next' do %>
-      Next <i class="icon-caret-right"></i>
-    <% end %>
+<% end %>
+<%= link_to t('.index'), Tlab::Post, class: 'post-index' %>
+<% unless @post.next.nil? %>
+  <%= link_to @post.next, class: 'next_page' do %>
+    Next →
   <% end %>
-</div>
+<% end %>
 </footer>
 </section>

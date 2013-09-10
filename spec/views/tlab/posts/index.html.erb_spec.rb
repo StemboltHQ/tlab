@@ -1,21 +1,19 @@
 require 'spec_helper'
 
 describe "tlab/posts/index" do
+  let(:posts) { [ stub_model(Tlab::Post,
+                            :title => "Title",
+                            :preview => "Preview",
+                            :published_at => DateTime.parse("2000-01-01"),
+                            :author => nil).decorate,
+                  stub_model(Tlab::Post,
+                             :title => "Title",
+                             :preview => "Preview",
+                             :published_at => DateTime.parse("2000-01-01"),
+                             :author => nil).decorate ] }
   before(:each) do
-    assign(:posts, [
-      stub_model(Tlab::Post,
-        :title => "Title",
-        :preview => "Preview",
-        :published_at => DateTime.parse("2000-01-01"),
-        :author => nil
-      ).decorate,
-      stub_model(Tlab::Post,
-        :title => "Title",
-        :preview => "Preview",
-        :published_at => DateTime.parse("2000-01-01"),
-        :author => nil
-      ).decorate
-    ])
+    assign(:posts, posts )
+    posts.stub(:total_pages) { 1 }
     view.stub(:can?).and_return false
   end
 

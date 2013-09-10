@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'draper'
+gem 'will_paginate', '~> 3.0'
 
 group :test do
   gem 'simplecov', :require => false

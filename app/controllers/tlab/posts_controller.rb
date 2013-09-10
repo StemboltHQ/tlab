@@ -12,7 +12,7 @@ module Tlab
 
     # GET /posts
     def index
-      @posts = Post.order('published_at desc')
+      @posts = Post.paginate(page: params[:page]).order('published_at desc')
     end
 
     # GET /posts/1

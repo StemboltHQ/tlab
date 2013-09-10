@@ -9,6 +9,8 @@ module Tlab
 
     scope :most_recent, -> { order("published_at desc").first(3) }
 
+    self.per_page = 10
+
     def next
       future_posts.first
     end
