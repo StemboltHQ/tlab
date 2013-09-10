@@ -1,48 +1,39 @@
 <section class="tlab-post-preview">
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3 hidden-phone">
-      <% if post.author.respond_to? :google_plus_image %>
-        <%= image_tag post.author.google_plus_image("200"), class: 'circle' %>
-      <% end %>
+    <div class="span2 hidden-phone">
+      <%= render 'avatar', author: post.author, img_size: 125  %>
     </div>
 
-    <div class="span9">
+    <div class="span10">
       <header>
-        <div>
-          <div class="btn-group post-controls pull-right">
-            <% if can? :manage, post %>
-              <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small edit' %>
-              <%= link_to t('.delete'), post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger delete' %>
-            <% end %>
-          </div>
-
-          <h2 class='post-title'>
-            <%= link_to post.title.titlecase, post %>
-          </h2>
+      <div>
+        <div class="btn-group post-controls pull-right">
+          <% if can? :manage, post %>
+            <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small edit' %>
+            <%= link_to t('.delete'), post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger delete' %>
+          <% end %>
         </div>
 
-        <p>
-          <span class='publishedAt'><%= l post.published_at %></span>
+        <h2 class='post-title'>
+          <%= link_to post.title.titlecase, post %>
+        </h2>
+      </div>
 
-          <% if post.author.respond_to? :given_name %>
-            <span class='name-first'><%= post.author.given_name.titlecase %></span>
-          <% end %>
-
-          <% if post.author.respond_to? :family_name %>
-            <span class='name-last'><%= post.author.family_name.titlecase %></span>
-          <% end %>
-        </p>
+      <p>
+      <span class='published-at'><%= l post.published_at, format: :tlab %></span>
+      <%= render 'author_name', author: post.author %>
+      </p>
       </header>
 
       <article>
-          <p>
-            <%= post.preview.html_safe %>
-          </p>
+      <p>
+      <%= post.preview.html_safe %>
+      </p>
       </article>
 
       <footer>
-        <%= link_to t('.link-to-show'), post, class: 'read-more' %>
+      <%= link_to t('.link-to-show'), post, class: 'read-more' %>
       </footer>
     </div>
   </div>

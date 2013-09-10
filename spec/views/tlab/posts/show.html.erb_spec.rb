@@ -26,7 +26,7 @@ describe "tlab/posts/show" do
   it "renders the published date" do
     render
 
-    assert_select '.publishedAt', text: (l DateTime.parse('2000-01-01') )
+    assert_select '.published-at', text: (h l DateTime.parse('2000-01-01'), format: :tlab )
   end
 
   it "does not render an edit button" do

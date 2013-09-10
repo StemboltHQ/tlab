@@ -17,10 +17,5 @@ module Tlab
     def share_google_plus request
       "https://plus.google.com/share?url=#{request.original_url}"
     end
-
-    def trunc_preview char_length
-      "#{preview[0 ... char_length]}&hellip;"
-    end
-
   end
 end

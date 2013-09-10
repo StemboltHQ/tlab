@@ -1,4 +1,7 @@
 en:
+  time:
+    formats:
+      tlab: "Posted at %I:%m %p, on %b %d, '%y"
   tlab:
     default: &DEFAULT
       edit: 'Edit'

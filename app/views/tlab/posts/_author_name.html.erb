@@ -1,0 +1,8 @@
+<span class="author-name">
+  <% if author.respond_to? :given_name %>
+    <span class='name-first' itemprop='givenName'><%= author.given_name.titlecase %></span>
+  <% end %>
+  <% if author.respond_to? :family_name %>
+    <span class='name-last' itemprop='familyName'><%= author.family_name.titlecase %></span>
+  <% end %>
+</span>

@@ -35,7 +35,7 @@ describe "tlab/posts/index" do
   it "renders the published date" do
     render
 
-    assert_select ".publishedAt", text: ( l DateTime.parse("2000-01-01") ), count: 2
+    assert_select ".published-at", text: (h l DateTime.parse("2000-01-01"), format: :tlab ), count: 2
   end
 
   it "does not render an edit or delete button" do

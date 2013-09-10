@@ -7,7 +7,5 @@
     <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
   </header>
 
-  <% @posts.each do |post| %>
-    <%= render 'tlab/posts/index_entry', post: post %>
-  <% end %>
+  <%= render partial: 'tlab/posts/index_entry', collection: @posts, as: :post %>
 </section>
