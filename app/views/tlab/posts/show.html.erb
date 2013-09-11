@@ -2,7 +2,10 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
-      <%= render 'avatar', author: @post.author, img_size: 200 %>
+      <div id="sidebar-social">
+        <%= render 'avatar', author: @post.author, img_size: 200 %>
+        <%= render 'sharing_links', post: @post %>
+      </div>
     </div>
 
     <div class="span9">
