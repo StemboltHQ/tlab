@@ -2,9 +2,9 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
-      <div id="sidebar-social">
-        <%= render 'avatar', author: @post.author, img_size: 200 %>
-        <%= render 'sharing_links', post: @post %>
+      <div id="sidebar-left">
+        <%= render 'avatar', author: @post.author, img_size: 125  %>
+        <%= render partial: "sidebar_left" %>
       </div>
     </div>
 
