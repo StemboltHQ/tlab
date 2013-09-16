@@ -10,9 +10,16 @@
 
     <div class="span9">
       <header>
+      <div class='row'>
+        <div class='pull-right'>
+          <% if can? :manage, Tlab::Post %>
+            <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
+          <% end %>
+        </div>
+      </div>
       <h1 itemprop='name' class='title'><%= @post.title.titlecase %></h1>
 
-      <span class='post-info' >
+      <div class='post-info pull-left'>
         <%= content_tag :span, class: 'published-at', itemprop: 'datePublished', content: @post.published_at.try(:to_date) do %>
           <%= l @post.published_at, format: :tlab %>
         <% end %>
@@ -21,14 +28,9 @@
           <% if @post.author.respond_to? :google_plus %>
             <link rel='author' href='<%= @post.author.google_plus %>'>
           <% end %>
-
           <%= render 'author_name', author: @post.author %>
-
-          <% if can? :manage, Tlab::Post %>
-            <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
-          <% end %>
         </span>
-      </span>
+      </div>
       </header>
       <article itemprop='articleBody'>
       <p>
