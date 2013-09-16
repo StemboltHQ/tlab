@@ -9,10 +9,10 @@
     </div>
 
     <div class="span9">
-      <header class="clearfix title">
-      <h1 itemprop='name' class='pull-left' ><%= @post.title.titlecase %></h1>
+      <header>
+      <h1 itemprop='name' class='title'><%= @post.title.titlecase %></h1>
 
-      <span class='post-info pull-right' >
+      <span class='post-info' >
         <%= content_tag :span, class: 'published-at', itemprop: 'datePublished', content: @post.published_at.try(:to_date) do %>
           <%= l @post.published_at, format: :tlab %>
         <% end %>
