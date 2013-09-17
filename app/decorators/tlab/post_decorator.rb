@@ -6,8 +6,9 @@ module Tlab
       "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"
     end
 
-    def share_twitter request
-      "http://twitter.com/share?url=#{request.original_url}"
+    def share_twitter request, params = {}
+      params = { url: request.original_url }.merge(params)
+      "http://twitter.com/share?#{params.to_query}"
     end
 
     def share_linkedin request

@@ -14,7 +14,7 @@ describe Tlab::PostDecorator do
 
   describe '#share_twitter' do
     subject { decorator.share_twitter request }
-    it { should eq "http://twitter.com/share?url=http://test.com" }
+    it { should eq "http://twitter.com/share?url=#{u "http://test.com"}" }
   end
 
   describe "#share_linkedin" do
