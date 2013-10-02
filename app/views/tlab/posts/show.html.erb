@@ -1,57 +1,58 @@
 <section id='tlab-post' itemscope itemtype='http://schema.org/Article' >
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <div id="sidebar-left">
-        <%= render 'avatar', author: @post.author, img_size: 125  %>
-        <%= render partial: "sidebar_left" %>
-      </div>
-    </div>
-
-    <div class="span9">
-      <header>
-      <div class='row'>
-        <div class='pull-right'>
-          <% if can? :manage, Tlab::Post %>
-            <%= link_to t('.edit'), edit_post_path(@post), class: 'btn edit' %>
-          <% end %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3">
+        <div id="sidebar-left">
+          <%= render 'avatar', author: @post.author, img_size: 125  %>
+          <%= render partial: "sidebar_left" %>
         </div>
       </div>
-      <h1 itemprop='name' class='title'><%= @post.title.titlecase %></h1>
 
-      <div class='post-info pull-left'>
-        <%= content_tag :span, class: 'published-at', itemprop: 'datePublished', content: @post.published_at.try(:to_date) do %>
-          <%= l @post.published_at, format: :tlab %>
-        <% end %>
+      <div class="span9">
+        <header>
+          <div class="page-header">
+            <div class="btn-group post-controls pull-right">
+              <% if can? :manage, @post %>
+                <%= link_to t('.edit'), edit_post_path(@post), class: 'btn btn-small edit' %>
+              <% end %>
+            </div>
+            <h1 itemprop='name'><%= @post.title.titlecase %></h1>
+          </div>
+          <span class='post-info' >
+            <%= content_tag :span, class: 'published-at', itemprop: 'datePublished', content: @post.published_at.try(:to_date) do %>
+              <%= l @post.published_at, format: :tlab %>
+            <% end %>
 
-        <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
-          <% if @post.author.respond_to? :google_plus %>
-            <link rel='author' href='<%= @post.author.google_plus %>'>
-          <% end %>
-          <%= render 'author_name', author: @post.author %>
-        </span>
+            <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+              <% if @post.author.respond_to? :google_plus %>
+                <link rel='author' href='<%= @post.author.google_plus %>'>
+              <% end %>
+
+              <%= render 'author_name', author: @post.author %>
+
+            </span>
+          </span>
+        </header>
+        <article itemprop='articleBody'>
+          <p>
+            <%= @post.body.html_safe %>
+          </p>
+        </article>
       </div>
-      </header>
-      <article itemprop='articleBody'>
-      <p>
-      <%= @post.body.html_safe %>
-      </p>
-      </article>
     </div>
   </div>
-</div>
 
-<footer class="clear-fix">
-<% unless @post.prev.nil? %>
-  <%= link_to @post.prev, class: 'previous_page' do %>
-    ← Previous
-  <% end %>
-<% end %>
-<%= link_to t('.index'), Tlab::Post, class: 'post-index' %>
-<% unless @post.next.nil? %>
-  <%= link_to @post.next, class: 'next_page' do %>
-    Next →
-  <% end %>
-<% end %>
-</footer>
+  <footer class="clear-fix">
+    <% unless @post.prev.nil? %>
+      <%= link_to @post.prev, class: 'previous_page' do %>
+        ← Previous
+      <% end %>
+    <% end %>
+    <%= link_to t('.index'), Tlab::Post, class: 'post-index' %>
+    <% unless @post.next.nil? %>
+      <%= link_to @post.next, class: 'next_page' do %>
+        Next →
+      <% end %>
+    <% end %>
+  </footer>
 </section>
