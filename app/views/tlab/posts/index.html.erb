@@ -1,15 +1,17 @@
 <section id="tlab-post-index">
-  <header class='page-header'>
-    <% if can? :manage, Tlab::Post %>
-      <%= link_to t('.new'), new_post_path, class: 'btn pull-right new' %>
-    <% end %>
+  <div class="container-fluid">
+    <header class='page-header'>
+      <% if can? :manage, Tlab::Post %>
+        <%= link_to t('.new'), new_post_path, class: 'btn pull-right new' %>
+      <% end %>
 
-    <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
-  </header>
+      <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
+    </header>
 
-  <%= render partial: 'tlab/posts/index_entry', collection: @posts, as: :post %>
+    <%= render partial: 'tlab/posts/index_entry', collection: @posts, as: :post %>
 
-  <footer>
-    <%= will_paginate @posts %>
-  </footer>
+    <footer>
+      <%= will_paginate @posts %>
+    </footer>
+  </div>
 </section>

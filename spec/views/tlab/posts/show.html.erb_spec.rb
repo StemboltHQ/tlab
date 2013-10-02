@@ -17,10 +17,10 @@ describe "tlab/posts/show" do
     assert_select 'header h1', text: 'Title'
   end
 
-  it "renders the body in an article" do
+  it "renders the body in an itemprop article" do
     render
 
-    assert_select 'article', text: 'Body'
+    assert_select "[itemprop='articleBody']", text: 'Body'
   end
 
   it "renders the published date" do

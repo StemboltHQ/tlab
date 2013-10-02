@@ -1,41 +1,37 @@
-<section class="tlab-post-preview">
-<div class="container-fluid">
-  <div class="row-fluid">
+<div class="row-fluid">
+  <section class="tlab-post-preview">
     <div class="span2 hidden-phone">
       <%= render 'avatar', author: post.author, img_size: 125  %>
     </div>
 
     <div class="span10">
       <header>
-      <div>
-        <div class="btn-group post-controls pull-right">
-          <% if can? :manage, post %>
-            <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small edit' %>
-            <%= link_to t('.delete'), post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger delete' %>
-          <% end %>
+        <div>
+          <div class="btn-group post-controls pull-right">
+            <% if can? :manage, post %>
+              <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small edit' %>
+              <%= link_to t('.delete'), post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-small btn-danger delete' %>
+            <% end %>
+          </div>
+
+          <h2 class='post-title'>
+            <%= link_to post.title.titlecase, post %>
+          </h2>
         </div>
 
-        <h2 class='post-title'>
-          <%= link_to post.title.titlecase, post %>
-        </h2>
-      </div>
-
-      <p>
-      <span class='published-at'><%= l post.published_at, format: :tlab %></span>
-      <%= render 'author_name', author: post.author %>
-      </p>
+        <p> <span class='published-at'><%= l post.published_at, format: :tlab %></span>
+          <%= render 'author_name', author: post.author %> </p>
       </header>
 
       <article>
-      <p>
-      <%= post.preview.html_safe %>
-      </p>
+        <p>
+          <%= post.preview.html_safe %>
+        </p>
       </article>
 
       <footer>
-      <%= link_to t('.link-to-show'), post, class: 'read-more' %>
+        <%= link_to t('.link-to-show'), post, class: 'read-more' %>
       </footer>
     </div>
-  </div>
+  </section>
 </div>
-</section>
