@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130617234504) do
+ActiveRecord::Schema.define(version: 20131106030609) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20130617234504) do
 
   create_table "tlab_posts", force: true do |t|
     t.string   "title"
-    t.string   "preview"
+    t.text     "preview"
     t.text     "body"
     t.datetime "published_at"
     t.integer  "author_id"
