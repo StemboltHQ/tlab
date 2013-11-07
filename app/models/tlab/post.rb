@@ -7,7 +7,7 @@ module Tlab
     attr_accessor :author_name
     belongs_to :author, class_name: Tlab.author_class
 
-    scope :most_recent, -> { order("published_at desc").first(3) }
+    scope :most_recent, ->(n = 3) { order("published_at desc").first(n) }
 
     self.per_page = 10
 
