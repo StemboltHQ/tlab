@@ -1,14 +1,24 @@
 <section id="tlab-post-index">
   <div class="container-fluid">
-    <header class='page-header'>
+    <header>
       <% if can? :manage, Tlab::Post %>
         <%= link_to t('.new'), new_post_path, class: 'btn pull-right new' %>
       <% end %>
-
-      <h1><%= (@posts.empty? ? t('.no-posts') : t('.title')).titlecase %></h1>
     </header>
 
-    <%= render partial: 'tlab/posts/index_entry', collection: @posts, as: :post %>
+    <% @posts.each do |post| %>
+      <section class='tlab-post' itemscope itemtype='http://schema.org/Article' >
+        <div class="row-fluid">
+          <div class="span2">
+            <%= render "sidebar_left", post: post %>
+          </div>
+
+          <div class="span8">
+            <%= render "post", post: post %>
+          </div>
+        </div>
+      </section>
+    <% end %>
 
     <footer>
       <%= will_paginate @posts %>

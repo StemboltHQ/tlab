@@ -1,0 +1,21 @@
+<article class>
+  <header>
+    <div class="btn-group post-controls pull-right">
+      <% if can? :manage, post %>
+        <%= link_to t('.edit'), edit_post_path(post), class: 'btn btn-small edit' %>
+      <% end %>
+    </div>
+    <h1 class="post-title" itemprop='name'><%= link_to post.title.titlecase, post %></h1>
+    <span class='post-info' >
+      <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+        <% if post.author.respond_to? :google_plus %>
+          <link rel='author' href='<%= post.author.google_plus %>'>
+        <% end %>
+
+      </span>
+    </span>
+  </header>
+  <div itemprop='articleBody'>
+    <%= post.body.html_safe %>
+  </div>
+</article>

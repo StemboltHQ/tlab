@@ -1,48 +1,15 @@
-<section id='tlab-post' itemscope itemtype='http://schema.org/Article' >
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span3">
-        <div id="sidebar-left">
-          <%= render 'avatar', author: @post.author, img_size: 125  %>
-          <%= render partial: "sidebar_left" %>
-        </div>
-      </div>
+<section class='tlab-post' itemscope itemtype='http://schema.org/Article'>
+  <div class="row-fluid">
+    <div class="span2">
+      <%= render "sidebar_left", post: @post %>
+    </div>
 
-      <div class="span9">
-        <article>
-          <header>
-            <div class="page-header">
-              <div class="btn-group post-controls pull-right">
-                <% if can? :manage, @post %>
-                  <%= link_to t('.edit'), edit_post_path(@post), class: 'btn btn-small edit' %>
-                <% end %>
-              </div>
-              <h1 itemprop='name'><%= @post.title.titlecase %></h1>
-            </div>
-            <span class='post-info' >
-              <%= content_tag :span, class: 'published-at', itemprop: 'datePublished', content: @post.published_at.try(:to_date) do %>
-                <%= l @post.published_at, format: :tlab %>
-              <% end %>
-
-              <span class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
-                <% if @post.author.respond_to? :google_plus %>
-                  <link rel='author' href='<%= @post.author.google_plus %>'>
-                <% end %>
-
-                <%= render 'author_name', author: @post.author %>
-
-              </span>
-            </span>
-          </header>
-          <div itemprop='articleBody'>
-            <%= @post.body.html_safe %>
-          </div>
-        </article>
-      </div>
+    <div class="span8">
+      <%= render "post", post: @post %>
     </div>
   </div>
 
-  <footer class="clear-fix">
+  <footer class="pagination clear-fix">
     <% unless @post.prev.nil? %>
       <%= link_to @post.prev, class: 'previous_page' do %>
         ← Previous
