@@ -1,1 +1,7 @@
-put some stuff in me about the author or something!
+<div class="sidebar-left">
+  <p><%= render 'avatar', author: post.author, img_size: 125  %></p>
+  <p><%= render 'author_name', author: post.author %></p>
+  <%= content_tag :p, class: 'published-at', itemprop: 'datePublished', content: post.published_at.try(:to_date) do %>
+    <%= l post.published_at, format: :tlab %>
+  <% end %>
+</div>
