@@ -1,3 +1,5 @@
+require 'friendly_id'
+
 module Tlab
   class Post < ActiveRecord::Base
     extend FriendlyId
