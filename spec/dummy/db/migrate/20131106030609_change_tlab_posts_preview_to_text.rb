@@ -1,1 +1,0 @@
-../../../../db/migrate/20131106030609_change_tlab_posts_preview_to_text.rb

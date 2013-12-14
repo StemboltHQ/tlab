@@ -1,6 +1,12 @@
+require 'friendly_id'
+
 module Tlab
   class Post < ActiveRecord::Base
+
+    include ActiveModel::ForbiddenAttributesProtection
+
     extend FriendlyId
+
     friendly_id :title, use: :history
 
     validates :slug, presence: true

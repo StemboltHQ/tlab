@@ -3,7 +3,7 @@ guard 'bundler' do
   watch(/^.+\.gemspec/)
 end
 
-guard 'spring' do
+guard :rspec do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^spec/spec_helper\.rb$})                   { |m| 'spec' }
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }

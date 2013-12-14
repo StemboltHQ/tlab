@@ -18,7 +18,7 @@ module Tlab
       context 'found a match' do
         let(:post) { stub_model Post }
         before(:each) do
-          Post.stub_chain(:friendly, :find).and_return post
+          Post.stub_chain(:find).and_return post
           get :show, id: 'noslughere', use_route: :tlab
         end
         it 'looks up post from history' do
@@ -100,7 +100,7 @@ module Tlab
       end
       context 'update succeeds' do
         before(:each) do
-          post.should_receive(:update).with(post_params).and_return(true)
+          post.should_receive(:update_attributes).with(post_params).and_return(true)
           put :update, { id: post.to_param, post: post_params, use_route: :tlab }
         end
         it { should redirect_to post }
@@ -108,7 +108,7 @@ module Tlab
       end
       context 'update fails' do
         before(:each) do
-          post.should_receive(:update).with(post_params).and_return(false)
+          post.should_receive(:update_attributes).with(post_params).and_return(false)
           put :update, { id: post.to_param, post: post_params, use_route: :tlab }
         end
         it { should render_template :edit }

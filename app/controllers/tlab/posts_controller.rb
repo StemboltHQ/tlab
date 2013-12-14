@@ -40,7 +40,7 @@ module Tlab
 
     # PATCH/PUT /posts/1
     def update
-      if @post.update(post_params)
+      if @post.update_attributes(post_params)
         redirect_to @post, notice: 'Post was successfully updated.'
       else
         render action: 'edit'
@@ -64,7 +64,7 @@ module Tlab
       end
 
       def rescue_friendly_history exception
-        Post.friendly.find(params[:id]).tap do |post|
+        Post.find(params[:id]).tap do |post|
           return redirect_to post, status: 301
         end
       end
