@@ -1,4 +1,18 @@
 = Tlab
+== Installation
+add
+
+``` ruby
+  mount Tlab::Engine => "/blog"
+
+```
+
+to your routes.rb
+
+run `rake tlab:install:migrations` from the terminal to install migrations.
+
+enjoy ;)
+
 
 == Authentication
 
