@@ -11,6 +11,8 @@ en:
       new: 'New Post'
 
     posts:
+      post:
+        <<: *DEFAULT
       index:
         <<: *DEFAULT
         title: 'Blog'
