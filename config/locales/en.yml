@@ -22,4 +22,4 @@ en:
         link-to-show: 'Read more'
       show:
         <<: *DEFAULT
-        index: 'Back'
+        index: 'All Posts'
